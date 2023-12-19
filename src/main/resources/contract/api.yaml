@@ -1,0 +1,46 @@
+openapi: 3.0.0
+info:
+  title: eCommerce System API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/
+paths:
+  /client/account:
+    post:
+      summary: Zasilenie konta klienta
+      description: Metoda do zasilania konta klienta określoną kwotą.
+      operationId: addFunds
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  $ref: '#/components/schemas/Email'
+                amount:
+                  $ref: '#/components/schemas/Amount'
+      responses:
+        '200':
+          description: Konto zasilone pomyślnie
+        '400':
+          description: Nieprawidłowe dane
+        '500':
+          description: Błąd serwera
+components:
+  schemas:
+    Email:
+      type: string
+      format: email
+      description: Email klienta
+    Amount:
+      type: object
+      properties:
+        value:
+          type: number
+          format: float
+          description: Wartość kwoty
+        currency:
+          type: string
+          description: Waluta PLN
