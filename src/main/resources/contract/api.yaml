@@ -5,7 +5,7 @@ info:
 servers:
   - url: http://localhost:8080/
 paths:
-  /client/account:
+  /clients:
     post:
       summary: Zasilenie konta klienta
       description: Metoda do zasilania konta klienta określoną kwotą.
